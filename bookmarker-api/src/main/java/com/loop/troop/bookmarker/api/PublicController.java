@@ -12,6 +12,6 @@ public class PublicController {
 
     @GetMapping("/test")
     String testString(){
-        return "Hello world!";
+        return "Hello world! vivek";
     }
 }
