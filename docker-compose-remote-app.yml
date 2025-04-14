@@ -1,10 +1,21 @@
 version: '3.8'
 services:
 
-  bookmarker-api:
+  bookmarker-ui-nextjs:
+    image: alexmercer1234556789/bookmarker-ui-nextjs:latest
     build:
-      context: bookmarker-api
-      dockerfile: Dockerfile.layered
+      context: bookmarker-ui-nextjs
+      dockerfile: Dockerfile
+    ports:
+      - "13000:3000"
+    environment:
+      SERVER_SIDE_API_BASE_URL: http://bookmarker-api:8080
+      CLIENT_SIDE_API_BASE_URL: http://localhost:18080
+    networks:
+      - app-net
+
+  bookmarker-api:
+    image: alexmercer1234556789/bookmarker-api:latest
     environment:
       SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
@@ -14,19 +25,6 @@ services:
     ports:
       - "18080:8080"
     restart: always
-    networks:
-      - app-net
-
-  bookmarker-ui-nextjs:
-    container_name: bookmarker-ui-nextjs
-    build:
-      context: bookmarker-ui-nextjs
-      dockerfile: Dockerfile
-    ports:
-      - "13000:3000"
-    environment:
-      SERVER_SIDE_API_BASE_URL: http://bookmarker-api:8080
-      CLIENT_SIDE_API_BASE_URL: http://localhost:18080
     networks:
       - app-net
 
