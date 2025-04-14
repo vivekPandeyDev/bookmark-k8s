@@ -1,10 +1,3 @@
-# springboot-kubernetes-youtube-series
-Code for "SpringBoot + Kubernetes Tutorial" YouTube Series https://www.youtube.com/playlist?list=PLuNxlOYbv61h66_QlcjCEkVAj6RdeplJJ
-
-> **NOTE:**
-> The original code explained in the YouTube video series is available in the `youtube-video-version` branch.
-> The code in the `main` branch is updated to use the latest versions of the dependencies.
-
 ## How to run?
 
 ### Pushing image to docker hub No local docker needed
